@@ -48,7 +48,7 @@ body{
     /* border: 1px solid #42BFDD; */
 }
 
-.navbar a{
+.navbar a, .small-navbar a {
     text-decoration: none;
     color: white;
 }
@@ -169,6 +169,9 @@ aside{
     color: #2c2c2c;
     font-size: 1.2rem;
 }
+.button-style i{
+    padding-left: 10px;
+}
 .button-box{
     display: flex;
     align-items: center;
@@ -179,6 +182,9 @@ aside{
 .button-box button{
     background: #084B83;
     cursor: pointer;
+}
+.button-box a{
+    text-decoration: none;
 }
 .button-style{
     padding: 0.5rem;
@@ -218,6 +224,7 @@ aside{
 .instruction-info .instruction-heading{
     margin-bottom: 1rem;
 }
+/* carousel */
 .carousel-container{
     width: 50vw;
     height: 50vh;
@@ -225,12 +232,37 @@ aside{
     align-items: center;
     justify-content: center;
 }
-.carousel-box{
+.gallery{
+    width: 360px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow: scroll;
+}
+.gallery div{
     width: 350px;
     height: 350px;
     background-color: #BBE6E4;
     border-radius: 10px;
+    margin-right: 1.1rem;
+    flex: none;
 }
+.gallery::-webkit-scrollbar{
+     /* takes scroll bar away*/
+    display: none;
+}
+.gallery img{
+    width: 130px;
+    margin-top: 2rem;
+}
+.gallery-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 /* FAQ */
 .FAQ-section h1{
     font-size: 2.5rem;
@@ -306,36 +338,39 @@ margin: 4rem;
     flex-wrap: wrap;
     margin: 0 4rem;
 }
-.services-box{
+.departments-box{
     width: 25vw;
     height: 20vh;
     margin-bottom: 2rem;
     border-radius: 5px;
+    line-height: 1.5rem;
+    color: #327f92;
 }
-.services-box:nth-child(1n + 2):hover{
-    background-position: left bottom;
+.departments-box:nth-child(1n + 2):hover{
+    background-position: left ;
 }
-.services-box:nth-child(1n + 2){
+.departments-box:nth-child(1n + 2){
     background-color: white;
     border-left: 1rem solid #327f92;
     background: linear-gradient(to right, #327f92 50%, white 50%);
     background-size: 200% ;
-    background-position: right bottom;
-    transition: all 1s ease-out;
+    background-position: right ;
+    transition: all 0.5s ease-out;
 }
 .services_outer-box .box1{
     border-left: 0.5rem solid #BBE6E4;
     border-right:0.5rem solid #BBE6E4 ;
 }
 .services_outer-box .box1 h1{
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     margin-bottom: 0.5rem;
     color: #327f92;
 
 }
-.services_outer-box .box1 p{
+.services_outer-box .box1 h6{
     font-size: 1.5rem;
     color: #327f92;
+    font-weight: 300;
 }
 .services-container span{
     border: 1px solid #327f92;
@@ -361,64 +396,161 @@ margin: 4rem;
     flex-wrap: wrap;
     margin: 0 4rem;
 }
-.departments-box{
+.services-box{
     width: 25vw;
     height: 20vh;
     margin-bottom: 2rem;
     border-radius: 5px;
     margin-top: 2rem;
-}
-.departments-box{
     background-color: white;
     border-right: 1rem solid #327f92;
+    color: #327f92;
+    line-height: 1.5rem;
+
 }
-.departments-box:nth-child(3){
+
+.services-box:nth-child(3){
     background-color: #BBE6E4;
     border-right: 1rem solid #BBE6E4;
 }
 
-.departments-box:nth-child(n + 4), .departments-box:nth-child(-n + 2 ){
+.services-box:nth-child(n + 4), .services-box:nth-child(-n + 2 ){
     background: linear-gradient(to left, #327f92 50%, white 50%);
     background-size: 200%;
     background-position: left bottom;
     transition: all .5s ease-out;
 }
 
- .departments-box:nth-child(n + 4):hover, .departments-box:nth-child(-n + 2 ):hover {
+ .services-box:nth-child(n + 4):hover, .services-box:nth-child(-n + 2 ):hover {
     background-position: right bottom;
 }
 
+.services-box, .departments-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.departments-box p , .departments-box h6, .services-box p, .services-box h6{
+    display:none;
+}
+.departments-box:hover h6, .services-box:hover h6{
+    display: block;
+}
+.departments-box:hover p, .services-box:hover p{
+    display: block;
+    color: white;
+}
+.departments-box:hover i, .services-box:hover i,.departments-box:hover h5, .services-box:hover h5{
+     color: #BBE6E4;
+}
+
+
+
 /* contact */
-.contact-container{
-    position: relative;
+.contact{
+    background-image: url("./media/contact-background.png");
+    background-attachment: fixed;
     height: 80vh;
-    background: url("./media/contact-background.png");
     background-position: center;
     background-size: cover;
     border-top: 3px solid #327f92;
+    position: relative;
 }
-
-.contact-overlay{
+.contact .heading-center{
+    top: 0;
+    left:45%;
+    z-index: 1;
+    display: flex;
+    position: absolute;
+}
+.contact{
+    /* width: 100%; */
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+.contact::after{
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.452);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
 }
- 
-/* contact */
-.contact-container .heading-center{
-    position: absolute;
-    top: 0;
-    left:43vw;
-    z-index: 1;
+.contact, .map-box , .form-box{
     display: flex;
+    justify-content: center;
+    /* after all above this allows it to be infront*/
+    z-index: 1;
 }
 
-.contact-box iframe{
-    z-index: 2;
+
+.contact-box{
+    display: flex;
+    align-items: end;
+    justify-content: center;
 }
+.map-box{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 30rem;
+    background-color: #327f92;
+    border-top-left-radius: 10px;
+}
+.map-box iframe{
+    border-top-left-radius: 10px;
+    width: 30vw;
+    height: 30rem;
+}
+.form-box{
+    background-color: #327f92;
+    width: 30vw;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+form textarea{
+    padding: 0.5rem;
+    resize: none;
+}
+form input{
+    width: 25vw;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+form input:focus , textarea{
+   outline: none;
+   background: none;
+   color: white;
+}
+form input, textarea{
+    border: 1px solid white;
+    border-radius: 5px;
+    background: none;
+}
+form input::placeholder, textarea::placeholder{
+    color: white;
+}
+form button{
+    margin: 0.5rem 0;
+}
+
+
+
 
 /* FOOTER */
 footer{
